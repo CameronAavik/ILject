@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <PostBuildEvent>echo f | xcopy /y "$(TargetPath)" "$(SolutionDir)PEPatcher\bin\Debug$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
+
+</Project>
