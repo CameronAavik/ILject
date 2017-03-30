@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PEPatcher.SamplePatchTarget
+namespace ILject.SampleFrameworkPatchTarget
 {
     internal class Program
     {

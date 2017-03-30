@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ILject.SamplePatch": {
+      "commandName": "Project",
+      "commandLineArgs": "$(SolutionDir)ILject.SamplePatchTarget\\bin\\Debug\\netcoreapp1.1\\ILject.SamplePatchTarget.dll $(SolutionDir)ILject.SampleFrameworkPatchTarget\\bin\\Debug\\ILject.SampleFrameworkPatchTarget.exe"
+    }
+  }
+}

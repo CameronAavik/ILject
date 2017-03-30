@@ -1,4 +1,4 @@
-﻿namespace PEPatcher.Core
+﻿namespace ILject.Core
 {
     public interface IInjector
     {

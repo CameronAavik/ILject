@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Runtime.Loader;
 using Mono.Cecil;
 
-namespace PEPatcher.Core
+namespace ILject.Core
 {
     public class PatchContext : IPatchContext
     {

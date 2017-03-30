@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "PEPatcher.SamplePatch": {
-      "commandName": "Project",
-      "commandLineArgs":
-        "$(SolutionDir)PEPatcher.SamplePatchTarget\\bin\\Debug\\netcoreapp1.1\\PEPatcher.SamplePatchTarget.dll $(SolutionDir)PEPatcher.SampleFrameworkPatchTarget\\bin\\Debug\\PEPatcher.SampleFrameworkPatchTarget.exe"
-    }
-  }
-}

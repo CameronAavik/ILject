@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5F5923CF-4CEA-4589-9A89-0F98CB05E6B3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PEPatcher.SampleFrameworkPatchTarget</RootNamespace>
-    <AssemblyName>PEPatcher.SampleFrameworkPatchTarget</AssemblyName>
+    <RootNamespace>ILject.SampleFrameworkPatchTarget</RootNamespace>
+    <AssemblyName>ILject.SampleFrameworkPatchTarget</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

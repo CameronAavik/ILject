@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using PEPatcher.Core;
+using ILject.Core;
 
-namespace PEPatcher.SamplePatch
+namespace ILject.SamplePatch
 {
     internal class Program
     {
@@ -41,7 +41,7 @@ namespace PEPatcher.SamplePatch
             }
             else
             {
-                Console.Error.WriteLine("Invalid usage. Correct usage is \"PEPatcher core-filename framework-filename\"");
+                Console.Error.WriteLine("Invalid usage. Correct usage is \"ILject core-filename framework-filename\"");
             }
             return arguments;
         }

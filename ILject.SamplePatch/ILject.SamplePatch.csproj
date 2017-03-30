@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PEPatcher.Core\PEPatcher.Core.csproj" />
+    <ProjectReference Include="..\ILject.Core\ILject.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

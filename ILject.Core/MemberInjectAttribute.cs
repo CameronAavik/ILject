@@ -3,7 +3,7 @@ using System.Linq;
 using Mono.Cecil;
 using Mono.Collections.Generic;
 
-namespace PEPatcher.Core
+namespace ILject.Core
 {
     [AttributeUsage(AttributeTargets.Method, Inherited = false)]
     public class MemberInjectAttribute : Attribute

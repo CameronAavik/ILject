@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEPatcher.Core", "PEPatcher.Core\PEPatcher.Core.csproj", "{C95076C0-D988-458B-AD6C-B34653434076}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILject.Core", "ILject.Core\ILject.Core.csproj", "{C95076C0-D988-458B-AD6C-B34653434076}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEPatcher.SamplePatch", "PEPatcher.SamplePatch\PEPatcher.SamplePatch.csproj", "{698E8B7D-2228-48D4-B61D-A359D520273E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILject.SamplePatch", "ILject.SamplePatch\ILject.SamplePatch.csproj", "{698E8B7D-2228-48D4-B61D-A359D520273E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEPatcher.SamplePatchTarget", "PEPatcher.SamplePatchTarget\PEPatcher.SamplePatchTarget.csproj", "{0695DA26-118B-42FB-8C6B-B88172BBD012}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILject.SamplePatchTarget", "ILject.SamplePatchTarget\ILject.SamplePatchTarget.csproj", "{0695DA26-118B-42FB-8C6B-B88172BBD012}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEPatcher.SampleFrameworkPatchTarget", "PEPatcher.SampleFrameworkPatchTarget\PEPatcher.SampleFrameworkPatchTarget.csproj", "{5F5923CF-4CEA-4589-9A89-0F98CB05E6B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILject.SampleFrameworkPatchTarget", "ILject.SampleFrameworkPatchTarget\ILject.SampleFrameworkPatchTarget.csproj", "{5F5923CF-4CEA-4589-9A89-0F98CB05E6B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
