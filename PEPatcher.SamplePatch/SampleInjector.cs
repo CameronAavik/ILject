@@ -9,6 +9,7 @@ namespace PEPatcher.SamplePatch
     {
         public int ExecutionPriority { get; set; } = 0;
 
+        [MemberInject("System.Int32 PEPatcher.SamplePatchTarget.Program::Add(System.Int32,System.Int32)", MemberType.Method)]
         public void InjectProgramAdd(MethodDefinition addMethod)
         {
             var processor = addMethod.Body.GetILProcessor();

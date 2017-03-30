@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using Mono.Cecil;
 
 namespace PEPatcher.Core
 {
     public interface IPatchContext
     {
-        AssemblyDefinition AssemblyDefinition { get; set; }
+        AssemblyDefinition AssemblyDefinition { get; }
         void LoadInjectors(IEnumerable<IInjector> injectors);
-        void Inject();
-        void Run();
+        void RunInjectors();
+        void Run(Func<Assembly, MethodInfo> getEntryPoint, object[] arguments);
     }
 }

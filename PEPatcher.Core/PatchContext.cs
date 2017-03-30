@@ -10,41 +10,73 @@ namespace PEPatcher.Core
 {
     public class PatchContext : IPatchContext
     {
-        public PatchContext(string executableName)
-        {
-            AssemblyDefinition = AssemblyDefinition.ReadAssembly(executableName);
-        }
+        #region Initialising the context
+
+        public AssemblyDefinition AssemblyDefinition { get; }
+
+        public PatchContext(string executableName) : this(AssemblyDefinition.ReadAssembly(executableName)) {}
 
         public PatchContext(AssemblyDefinition assemblyDefinition)
         {
             AssemblyDefinition = assemblyDefinition;
         }
 
-        public AssemblyDefinition AssemblyDefinition { get; set; }
+        #endregion
+
+        #region Loading the injectors
+
+        private List<IInjector> Injectors { get; } = new List<IInjector>();
 
         public void LoadInjectors(IEnumerable<IInjector> injectors)
         {
-            throw new NotImplementedException();
+            Injectors.AddRange(injectors);
         }
 
-        public void Inject()
+        #endregion
+
+        #region Running the injectors
+
+        public void RunInjectors()
         {
-            throw new NotImplementedException();
+            Injectors.OrderByDescending(i => i.ExecutionPriority).ToList().ForEach(RunInjector);
         }
 
-        public void Run()
+        private void RunInjector(IInjector injector)
         {
-            using (var stream = new MemoryStream())
+            injector.GetType()
+                    .GetRuntimeMethods()
+                    .Select(m => new {Method = m, Attributes = m.GetCustomAttributes().OfType<MemberInjectAttribute>()})
+                    .Where(m => m.Attributes.Count() == 1)
+                    .ToList()
+                    .ForEach(m => RunInjectionMethod(injector, m.Method, m.Attributes.Single()));
+        }
+
+        private void RunInjectionMethod(IInjector injector, MethodBase injectionMethod, MemberInjectAttribute attribute)
+        {
+            injectionMethod.Invoke(injector, new object[] {attribute.GetMember(AssemblyDefinition)});
+        }
+
+        #endregion
+
+        #region Running the assembly
+
+        public void Run(Func<Assembly, MethodInfo> getEntryPoint = null, object[] arguments = null)
+        {
+            using (var assemblyStream = new MemoryStream())
             {
-                AssemblyDefinition.MainModule.Write(stream);
-                stream.Seek(0, SeekOrigin.Begin);
-                var assembly = AssemblyLoadContext.Default.LoadFromStream(stream);
-                GetEntryPoint(assembly).Invoke(null, new object[] { new string[0] });
+                AssemblyDefinition.MainModule.Write(assemblyStream);
+                assemblyStream.Seek(0, SeekOrigin.Begin);
+                var assembly = AssemblyLoadContext.Default.LoadFromStream(assemblyStream);
+                GetEntryPoint(assembly, getEntryPoint).Invoke(null, arguments ?? new object[] {new string[0]});
             }
         }
 
-        private static MethodInfo GetEntryPoint(Assembly assembly)
+        private static MethodInfo GetEntryPoint(Assembly assembly, Func<Assembly, MethodInfo> getEntryPoint)
         {
+            if (getEntryPoint != null)
+            {
+                return getEntryPoint(assembly);
+            }
             var entryPointField = assembly.GetType().GetRuntimeField("EntryPoint");
             if (entryPointField != null)
             {
@@ -57,5 +89,7 @@ namespace PEPatcher.Core
             }
             return mainMethods.Single();
         }
+
+        #endregion
     }
 }

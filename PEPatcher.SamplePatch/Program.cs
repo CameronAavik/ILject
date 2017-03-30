@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Mono.Cecil.Cil;
 using PEPatcher.Core;
 
 namespace PEPatcher.SamplePatch
@@ -16,9 +14,8 @@ namespace PEPatcher.SamplePatch
             if (arguments.IsValid)
             {
                 var context = new PatchContext(arguments.ExecutableName);
-                var method = context.AssemblyDefinition.MainModule.Types.SelectMany(t => t.Methods)
-                    .Single(m => m.FullName == "System.Int32 PEPatcher.SamplePatchTarget.Program::Add(System.Int32,System.Int32)");
-                new SampleInjector().InjectProgramAdd(method);
+                context.LoadInjectors(new[] {new SampleInjector()});
+                context.RunInjectors();
                 context.Run();
             }
             Console.WriteLine("Press any key to quit");
