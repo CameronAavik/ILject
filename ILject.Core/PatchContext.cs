@@ -13,12 +13,14 @@ namespace ILject.Core
         #region Initialising the context
 
         public AssemblyDefinition AssemblyDefinition { get; }
+        public AssemblyLoadContext LoadContext { get; }
 
         public PatchContext(string executableName) : this(AssemblyDefinition.ReadAssembly(executableName)) {}
 
         public PatchContext(AssemblyDefinition assemblyDefinition)
         {
             AssemblyDefinition = assemblyDefinition;
+            LoadContext = new CustomAssemblyLoadContext();
         }
 
         #endregion
@@ -66,7 +68,7 @@ namespace ILject.Core
             {
                 AssemblyDefinition.MainModule.Write(assemblyStream);
                 assemblyStream.Seek(0, SeekOrigin.Begin);
-                var assembly = AssemblyLoadContext.Default.LoadFromStream(assemblyStream);
+                var assembly = LoadContext.LoadFromStream(assemblyStream);
                 GetEntryPoint(assembly, getEntryPoint).Invoke(null, arguments ?? new object[] {new string[0]});
             }
         }
