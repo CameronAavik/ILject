@@ -13,25 +13,35 @@ namespace PEPatcher.SamplePatch
             var arguments = ValidateArguments(args);
             if (arguments.IsValid)
             {
-                var context = new PatchContext(arguments.ExecutableName);
-                context.LoadInjectors(new[] {new SampleInjector()});
+                var context = new PatchContext(arguments.CoreExecutableName);
+                context.LoadInjectors(new[] {new SampleCoreInjector()});
                 context.RunInjectors();
                 context.Run();
+
+                Console.WriteLine($"Finished running .NET Core injection sample.{Environment.NewLine}Press Any key to continue");
+                Console.ReadKey(true);
+
+                context = new PatchContext(arguments.FrameworkExecutableName);
+                context.LoadInjectors(new[] {new SampleFrameworkInjector()});
+                context.RunInjectors();
+                context.Run();
+                Console.WriteLine("Finished running .NET Framework injection sample.");
             }
             Console.WriteLine("Press any key to quit");
-            Console.ReadKey();
+            Console.ReadKey(true);
         }
 
         private static Arguments ValidateArguments(IReadOnlyList<string> args)
         {
-            var arguments = new Arguments {IsValid = args.Count == 1};
+            var arguments = new Arguments {IsValid = args.Count == 2};
             if (arguments.IsValid)
             {
-                arguments.ExecutableName = args[0];
+                arguments.CoreExecutableName = args[0];
+                arguments.FrameworkExecutableName = args[1];
             }
             else
             {
-                Console.Error.WriteLine("Invalid usage. Correct usage is \"PEPatcher filename\"");
+                Console.Error.WriteLine("Invalid usage. Correct usage is \"PEPatcher core-filename framework-filename\"");
             }
             return arguments;
         }
@@ -39,7 +49,8 @@ namespace PEPatcher.SamplePatch
         internal class Arguments
         {
             public bool IsValid { get; set; }
-            public string ExecutableName { get; set; }
+            public string CoreExecutableName { get; set; }
+            public string FrameworkExecutableName { get; set; }
         }
     }
 }

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEPatcher.SamplePatch", "PE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEPatcher.SamplePatchTarget", "PEPatcher.SamplePatchTarget\PEPatcher.SamplePatchTarget.csproj", "{0695DA26-118B-42FB-8C6B-B88172BBD012}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEPatcher.SampleFrameworkPatchTarget", "PEPatcher.SampleFrameworkPatchTarget\PEPatcher.SampleFrameworkPatchTarget.csproj", "{5F5923CF-4CEA-4589-9A89-0F98CB05E6B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0695DA26-118B-42FB-8C6B-B88172BBD012}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0695DA26-118B-42FB-8C6B-B88172BBD012}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0695DA26-118B-42FB-8C6B-B88172BBD012}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F5923CF-4CEA-4589-9A89-0F98CB05E6B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F5923CF-4CEA-4589-9A89-0F98CB05E6B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F5923CF-4CEA-4589-9A89-0F98CB05E6B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F5923CF-4CEA-4589-9A89-0F98CB05E6B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
