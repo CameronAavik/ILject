@@ -9,10 +9,4 @@
     <ProjectReference Include="..\ILject.Core\ILject.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="System.Runtime.Loader">
-      <HintPath>C:\Users\camer\.nuget\packages\system.runtime.loader\4.3.0\ref\netstandard1.5\System.Runtime.Loader.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
